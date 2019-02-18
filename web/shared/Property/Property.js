@@ -6,6 +6,12 @@ import { Flex } from '@rebass/grid/emotion';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+
 import { Link } from '../../controls/link';
 
 import {
@@ -26,6 +32,9 @@ const PropertyFragment = createFragment<PropertyData>(
     fragment Property_property on Property {
       id
       livingSurface
+      landSurface
+      numberOfRooms
+      numberOfParkings
     }
   `
 );
@@ -36,6 +45,9 @@ const PropertyUpsertLead = createMutation<PropertyUpsertMutation, {}>(graphql`
       property {
         id
         livingSurface
+        landSurface
+        numberOfRooms
+        numberOfParkings
       }
     }
   }
@@ -47,6 +59,7 @@ type Props = {|
 |};
 
 export const Property = (props: Props) => {
+  lo
   return (
     <>
       <PropertyFragment property={props.property}>
@@ -55,10 +68,38 @@ export const Property = (props: Props) => {
             <Paper
               css={{ maxWidth: 960, marginTop: 16, width: '100%', padding: 16 }}
             >
+            <Link href={{ pathname: '/createProperty' }}>
+              <Button to="/createProperty" color="primary" variant="contained">
+                CREATE NEW 
+              </Button>
+            </Link>
               <PropertyUpsertLead>
                 {(/* use { mutate, mutating } to commit changes to the API */) => (
                   <>
-                    <Typography variant="h6">Start here</Typography>
+                    <Typography variant="h6">Properties
+                    <Paper>
+                      <Table>
+                        <TableHead>
+                          <TableRow>
+                            <TableCell>Living surface</TableCell>
+                            <TableCell align="right">Land surface</TableCell>
+                            <TableCell align="right">Number of rooms</TableCell>
+                            <TableCell align="right">Number of parkings</TableCell>
+                          </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            <TableRow >
+                              <TableCell component="th" scope="row">
+                                21.5
+                              </TableCell>
+                              <TableCell align="right">54.6</TableCell>
+                              <TableCell align="right">46.3</TableCell>
+                              <TableCell align="right">26</TableCell>
+                            </TableRow>
+                        </TableBody>
+                      </Table>
+                    </Paper>
+                    </Typography>
                     <Link href={{ pathname: '/' }}>
                       <Button
                         to="/"

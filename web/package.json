@@ -34,6 +34,8 @@
     "tiny-invariant": "^1.0.3"
   },
   "devDependencies": {
+    "@emotion/core": "^10.0.7",
+    "@emotion/styled": "^10.0.7",
     "@babel/core": "^7.1.5",
     "@babel/plugin-proposal-optional-chaining": "^7.0.0",
     "@babel/preset-flow": "^7.0.0",

@@ -17,6 +17,21 @@ export const PropertyType = new GraphQLObjectType({
       resolve: parent => parent.living_surface,
     },
 
+    landSurface: {
+      type: GraphQLFloat,
+      resolve: parent => parent.land_surface,
+    },
+
+    numberOfRooms: {
+      type: GraphQLFloat,
+      resolve: parent => parent.number_of_rooms,
+    },
+
+    numberOfParkings: {
+      type: GraphQLInt,
+      resolve: parent => parent.number_of_parkings,
+    },
+
     createdAt: {
       type: GraphQLDateTime,
       resolve: parent => parent.created_at,
